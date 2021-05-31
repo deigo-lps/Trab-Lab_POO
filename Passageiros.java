@@ -6,20 +6,31 @@ public class Passageiros{
   private DataHora data_nascimento;
   private Endereco endereco;
   private String profissao;
+  private String login;
+  private String senha;
   public Rotas rota;
   
   public Passageiros(){
-    this("","",new DataHora(),new Endereco(),"");
+    this("","",new DataHora(),new Endereco(),"","","");
   }
 
-	public Passageiros(String documento, String nome, DataHora data_nascimento, Endereco endereco, String profissao) {
+	public Passageiros(String documento, String nome, DataHora data_nascimento, Endereco endereco, String profissao,String login,String senha) {
 		this.documento = documento;
 		this.nome = nome;
 		this.data_nascimento = data_nascimento;
 		this.endereco = endereco;
 		this.profissao = profissao;
     this.rota=new Rotas();
+    this.login=login;
+    this.senha=senha;
 	}
+  
+  public boolean validaLogin(String senha){
+    if(this.senha==senha)
+      return true;
+    else
+      return false;
+  }
   
   public void printPassageiro(){
     System.out.printf("Nome:%s\nIdentidade:%s\nData de Nascimento: ",nome,documento);
