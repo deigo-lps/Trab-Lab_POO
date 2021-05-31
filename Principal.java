@@ -51,23 +51,7 @@ public class Principal extends Metodos{
           break;
         }
         case 3:{
-          System.out.println("Se não for ter alguma parada preencha com ponto.");
-          System.out.printf("Digite a origem: ");
-          scan.nextLine();
-          String origem=scan.nextLine();
-          System.out.printf("Digite o destino: ");
-          String destino=scan.nextLine();
-          System.out.printf("Digite a parada 1: ");
-          String p1=scan.nextLine();
-          System.out.printf("Digite a parada 2: ");
-          String p2=scan.nextLine();
-          System.out.printf("Digite a parada 3: ");
-          String p3=scan.nextLine();
-          System.out.printf("Digite dia mes ano hora e minuto de saida separando por espaco: ");
-          DataHora saida=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt());
-          System.out.printf("Digite dia mes ano hora e minuto de chegada separando por espaco: ");
-          DataHora chegada=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt());
-          rotas.add(new Rotas(origem,destino,p1,p2,p3,saida,chegada));
+          addmodRota(1,0,rotas);
           // rotas.get(0).printRota();
           break;
         }
@@ -77,44 +61,84 @@ public class Principal extends Metodos{
           op1=scan.nextInt();
           System.out.println("1 para motorista, 2 para onibus, 3 para rota: ");
           op2=scan.nextInt();
-          if(op2==1){
-            for(int i=0;i<motoristas.size();i++){
-              System.out.printf("ID: %d\n",i);
-              motoristas.get(i).printMotorista();
-              System.out.println("/-----------------/");
-            }
-            System.out.println("Digite o ID do motorista: ");
-            aux=scan.nextInt();
-            if(aux<0 || aux>motoristas.size())
-              System.out.println("ID invalido.");
-            else{
-              if(op1==2){
-                motoristas.remove(aux);
-                System.out.println("Motorista apagado.");
+          switch(op2){
+            case 1:{
+              if(motoristas.size()==0){
+                System.out.println("Sem motoristas.");
               }
               else{
-                addmodMotorista(2,aux,motoristas);
+                for(int i=0;i<motoristas.size();i++){
+                  System.out.printf("ID: %d\n",i);
+                  motoristas.get(i).printMotorista();
+                  System.out.println("/-----------------/");
+                }
+                System.out.println("Digite o ID do motorista: ");
+                aux=scan.nextInt();
+                if(aux<0 || aux>motoristas.size())
+                  System.out.println("ID invalido.");
+                else{
+                  if(op1==2){
+                    motoristas.remove(aux);
+                    System.out.println("Motorista apagado.");
+                  }
+                  else{
+                    addmodMotorista(2,aux,motoristas);
+                  }
+                }
               }
+              break;
             }
-          }
-          else if(op2==2){
-            for(int i=0;i<onibus.size();i++){
-              System.out.printf("ID: %d\n",i);
-              onibus.get(i).printOnibus();
-              System.out.println("/-----------------/");
-            }
-            System.out.println("Digite o ID do onibus: ");
-            aux=scan.nextInt();
-            if(aux<0 || aux>onibus.size())
-              System.out.println("ID invalido.");
-            else{
-              if(op1==2){
-                onibus.remove(aux);
-                System.out.println("Onibus apagado.");
+            case 2:{
+              if(onibus.size()==0){
+                System.out.println("Sem onibus.");
               }
               else{
-                addmodOnibus(2,aux,onibus);
+                for(int i=0;i<onibus.size();i++){
+                  System.out.printf("ID: %d\n",i);
+                  onibus.get(i).printOnibus();
+                  System.out.println("/-----------------/");
+                }
+                System.out.println("Digite o ID do onibus: ");
+                aux=scan.nextInt();
+                if(aux<0 || aux>onibus.size())
+                  System.out.println("ID invalido.");
+                else{
+                  if(op1==2){
+                    onibus.remove(aux);
+                    System.out.println("Onibus apagado.");
+                  }
+                  else{
+                    addmodOnibus(2,aux,onibus);
+                  }
+                }
               }
+              break;
+            }
+            case 3:{
+              if(motoristas.size()==0){
+                System.out.println("Sem motoristas.");
+              }
+              else{
+                for(int i=0;i<rotas.size();i++){
+                  System.out.printf("ID: %d\n",i);
+                  rotas.get(i).printRota();
+                  System.out.println("/-----------------/");
+                }
+                System.out.println("Digite o ID da rota: ");
+                aux=scan.nextInt();
+                if(aux<0 || aux>rotas.size())
+                  System.out.println("ID invalido.");
+                else{
+                  if(op1==2){
+                    rotas.remove(aux);
+                    System.out.println("Rota apagada.");
+                  }
+                  else{
+                    addmodRota(2,aux,rotas);
+                  }
+                }
+              }
+              break;
             }
           }
           break;

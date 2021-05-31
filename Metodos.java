@@ -33,8 +33,34 @@ public class Metodos{
     if(op==1)
       onibus.add(new Onibus(modelo,ano,marca,km,new int[linha][coluna]));
     else if (op==2){
-      onibus.get(id).setOnibus(modelo,ano,marca,km,new int[linha][coluna]);
+      //se mudar os assentos e acabar tirando uma posição ocupada daria problema se fosse sistema real,
+      //então não da pra modificar assentos.
+      onibus.get(id).setOnibus(modelo,ano,marca,km);
       System.out.println("Onibus modificado.");
+    }
+  }
+  public static void addmodRota(int op,int id,ArrayList<Rotas> rotas){
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Se não for ter alguma parada preencha com ponto.");
+    System.out.printf("Digite a origem: ");
+    String origem=scan.nextLine();
+    System.out.printf("Digite o destino: ");
+    String destino=scan.nextLine();
+    System.out.printf("Digite a parada 1: ");
+    String p1=scan.nextLine();
+    System.out.printf("Digite a parada 2: ");
+    String p2=scan.nextLine();
+    System.out.printf("Digite a parada 3: ");
+    String p3=scan.nextLine();
+    System.out.printf("Digite dia mes ano hora e minuto de saida separando por espaco: ");
+    DataHora saida=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt());
+    System.out.printf("Digite dia mes ano hora e minuto de chegada separando por espaco: ");
+    DataHora chegada=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt(),scan.nextInt());
+    if(op==1)
+      rotas.add(new Rotas(origem,destino,p1,p2,p3,saida,chegada));
+    else if (op==2){
+      rotas.get(id).setRota(origem,destino,p1,p2,p3,saida,chegada);
+      System.out.println("Rota modificada.");
     }
   }
   

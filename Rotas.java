@@ -89,4 +89,12 @@ public class Rotas{
   public void setOnibus(Onibus onibus){
     this.onibus=onibus;
   }
+  public void setRota(String origem, String destino, String parada1, String parada2, String parada3, DataHora saida, DataHora chegada){
+    setOrigem(origem);
+    setDestino(destino);
+    setParada1(parada1);
+    setParada1(parada2);
+    setSaida(saida);
+    setChegada(chegada);
+  }
 }
