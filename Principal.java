@@ -3,7 +3,7 @@
 // deverá informar os horários, as rotas, o nome do motorista, os valores da passagem e os
 // assentos disponíveis. O passageiro selecionará a opção preferível e a compra será efetivada.
 // O assento escolhido pelo passageiro não ficará mais disponível para comprar.
-import java.util.Scanner;
+import java.util.*;
 public class Principal{
   public static void main(String[] args) {
     Scanner scan=new Scanner(System.in);
@@ -20,12 +20,18 @@ public class Principal{
     // DataHora data=new DataHora(dia,mes,ano,hora,minuto);
     // data.printDataHora();
     
-    // Onibus onibus=new Onibus("modelo",2021,"benz",25,new int[4][12]);
-    // onibus.resetAssentos();
-    // onibus.setAssento(4,12,2);
-    // onibus.getAssentos();
+    Onibus onibus=new Onibus("modelo",2021,"benz",25,new int[4][12]);
+    onibus.resetAssentos();
+    onibus.setAssento(4,12,2);
+    onibus.getAssentos();
+    onibus.motorista.printMotorista();
     
-    Rotas rota=new Rotas("Rio Preto","Cedral?","Nsei1","Nsei2","Nsei3",new DataHora(28,04,2021,22,30),new DataHora(29,04,2021,10,50));
-    rota.printRota();
+    // Rotas rota=new Rotas("Rio Preto","Cedral?","Nsei1","Nsei2","Nsei3",new DataHora(28,04,2021,22,30),new DataHora(29,04,2021,10,50));
+    // rota.printRota();
+    
+    // ArrayList<Motorista> motoristas = new ArrayList<>();
+    // ArrayList<Onibus> onibus = new ArrayList<>();
+    // ArrayList<Passageiros> passageiros = new ArrayList<>();
+    // ArrayList<Rotas> rotas = new ArrayList<>();
   }
 }

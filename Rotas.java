@@ -8,6 +8,11 @@ public class Rotas{
   private String parada3;
   private DataHora saida;
   private DataHora chegada;
+  public Onibus onibus;
+  
+  public Rotas(){
+    this("","","","","",new DataHora(),new DataHora());
+  }
 
 	public Rotas(String origem, String destino, String parada1, String parada2, String parada3, DataHora saida, DataHora chegada) {
 		this.origem = origem;
@@ -17,6 +22,7 @@ public class Rotas{
 		this.parada3 = parada3;
 		this.saida = saida;
 		this.chegada = chegada;
+    this.onibus=new Onibus();
 	}
   public void printRota(){
     System.out.printf("Origem: %s\nDestino: %s\nParada1: %s\nParada2: %s\nParada3: %s\nSaida: ",origem,destino,parada1,parada2,parada3);
@@ -80,4 +86,7 @@ public class Rotas{
 	public void setChegada(DataHora chegada) {
 		this.chegada = chegada;
 	}
+  public void setOnibus(Onibus onibus){
+    this.onibus=onibus;
+  }
 }

@@ -5,6 +5,11 @@ public class Onibus{
   private String marca;
   private int quilometragem;
   private int[][] assentos;/*=new int[4][12];*/
+  public Motorista motorista;
+  
+  public Onibus(){
+    this("",0,"",0,new int[0][0]);
+  }
   
 	public Onibus(String modelo, int anoFabricacao, String marca, int quilometragem, int[][] assentos){
 		this.modelo = modelo;
@@ -12,7 +17,11 @@ public class Onibus{
 		this.marca = marca;
 		this.quilometragem = quilometragem;
     this.assentos=assentos;
+    this.motorista=new Motorista();
 	}
+  public void printOnibus(){
+    System.out.printf("Modelo: %s\nAno de Fabricacao: %d\nMarca: %s\nQuilometragem: %d\n",modelo,anoFabricacao,marca,quilometragem);
+  }
   public String getModelo(){
     return modelo;
   }
@@ -36,6 +45,9 @@ public class Onibus{
   }
   public void setQuilometragem(int quilometragem){
     this.quilometragem=quilometragem;
+  }
+  public void setMotorista(Motorista motorista){
+    this.motorista=motorista;
   }
   public void resetAssentos(){
     for(int i=0;i<assentos.length;i++){

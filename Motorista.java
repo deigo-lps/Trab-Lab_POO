@@ -4,6 +4,10 @@ public class Motorista{
   private String CNH;
   private DataHora data_admissao;
   private String nome;
+  
+  public Motorista(){
+    this("",new DataHora(),"");
+  }
 
 	public Motorista(String CNH, DataHora data_admissao, String nome) {
 		this.CNH = CNH;
@@ -11,7 +15,7 @@ public class Motorista{
 		this.nome = nome;
 	}
   public void printMotorista(){
-    System.out.printf("Nome: %s\nCNH: %s\nData de Admissao: ");
+    System.out.printf("Nome: %s\nCNH: %s\nData de Admissao: ",nome,CNH);
     data_admissao.printDataHora();
   }
 

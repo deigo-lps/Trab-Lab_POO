@@ -6,6 +6,11 @@ public class Passageiros{
   private DataHora data_nascimento;
   private Endereco endereco;
   private String profissao;
+  public Rotas rota;
+  
+  public Passageiros(){
+    this("","",new DataHora(),new Endereco(),"");
+  }
 
 	public Passageiros(String documento, String nome, DataHora data_nascimento, Endereco endereco, String profissao) {
 		this.documento = documento;
@@ -13,6 +18,7 @@ public class Passageiros{
 		this.data_nascimento = data_nascimento;
 		this.endereco = endereco;
 		this.profissao = profissao;
+    this.rotas=new Rota();
 	}
   
   public void printPassageiro(){
@@ -62,4 +68,7 @@ public class Passageiros{
 	public void setProfissao(String profissao) {
 		this.profissao = profissao;
 	}
+  public void setRota(Rotas rota){
+    this.rota=rota;
+  }
 }

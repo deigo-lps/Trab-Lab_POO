@@ -46,7 +46,7 @@ public class DataHora{
 	}
 
 	public boolean setAno(int ano) {
-    if(ano<2021){
+    if(ano<1800){
       System.out.println("Ano invalido. Tente novamente.");
       return false;
     }
@@ -71,6 +71,9 @@ public class DataHora{
 		this.minuto = minuto;
     return true;
 	}
+  public DataHora(){
+    this(1,1,2000,1,1);
+  }
   public DataHora(int dia,int mes,int ano){
     this(dia,mes,ano,1,1);
   }
