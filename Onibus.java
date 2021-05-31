@@ -80,4 +80,11 @@ public class Onibus{
     else
       this.assentos[i-1][j-1]=estado;
   }
+  public void setOnibus(String modelo, int anoFabricacao, String marca, int quilometragem, int[][] assentos){
+    setModelo(modelo);
+    setAnoFab(anoFabricacao);
+    setMarca(marca);
+    setQuilometragem(quilometragem);
+    this.assentos=assentos;
+  }
 }

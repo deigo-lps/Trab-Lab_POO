@@ -46,21 +46,9 @@ public class Principal extends Metodos{
         }
         //n esquecer de fazer loop pra reseta os assentos(eu acho q precisa seila).
         case 2:{
-          System.out.printf("Digite o modelo: ");
-          scan.nextLine();
-          String modelo=scan.nextLine();
-          System.out.printf("Digite o ano de fabricacao: ");
-          int ano=scan.nextInt();
-          System.out.printf("Digite a marca: ");
-          scan.nextLine();
-          String marca=scan.nextLine();
-          System.out.printf("Digite a quilometragem: ");
-          int km=scan.nextInt();
-          System.out.printf("Digite numero de linhas e colunas de assentos separando por espaco: ");
-          int linha=scan.nextInt();
-          int coluna=scan.nextInt();
-          onibus.add(new Onibus(modelo,ano,marca,km,new int[linha][coluna]));
+          addmodOnibus(1,0,onibus);
           // onibus.get(0).printOnibus();
+          break;
         }
         case 3:{
           System.out.println("Se não for ter alguma parada preencha com ponto.");
@@ -109,6 +97,26 @@ public class Principal extends Metodos{
               }
             }
           }
+          else if(op2==2){
+            for(int i=0;i<onibus.size();i++){
+              System.out.printf("ID: %d\n",i);
+              onibus.get(i).printOnibus();
+              System.out.println("/-----------------/");
+            }
+            System.out.println("Digite o ID do onibus: ");
+            aux=scan.nextInt();
+            if(aux<0 || aux>onibus.size())
+              System.out.println("ID invalido.");
+            else{
+              if(op1==2){
+                onibus.remove(aux);
+                System.out.println("Onibus apagado.");
+              }
+              else{
+                addmodOnibus(2,aux,onibus);
+              }
+            }
+          }
           break;
         }
         case 5: 
@@ -118,6 +126,6 @@ public class Principal extends Metodos{
           }
           break;
       }
-    }while(op!=4);
+    }while(op!=5);
   }
 }
