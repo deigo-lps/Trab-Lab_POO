@@ -7,70 +7,70 @@ public class DataHora{
   private int hora;
   private int minuto;
   
-	public int getDia() {
-		return dia;
-	}
+  public int getDia() {
+    return dia;
+  }
 
-	public int getMes() {
-		return mes;
-	}
+  public int getMes() {
+    return mes;
+  }
 
-	public int getAno() {
-		return ano;
-	}
+  public int getAno() {
+    return ano;
+  }
 
-	public int getHora() {
-		return hora;
-	}
+  public int getHora() {
+    return hora;
+  }
 
-	public int getMinuto() {
-		return minuto;
-	}
+  public int getMinuto() {
+    return minuto;
+  }
 
-	public boolean setDia(int dia) {
+  public boolean setDia(int dia) {
     if(dia<1 || dia>31){
       System.out.println("Dia invalido. Tente novamente.");
       return false;
     }
-		this.dia = dia;
+    this.dia = dia;
     return true;
-	}
+  }
 
-	public boolean setMes(int mes) {
+  public boolean setMes(int mes) {
     if(mes<1 || mes>12){
       System.out.println("Mes invalido. Tente novamente.");
       return false;
     }
-		this.mes = mes;
+    this.mes = mes;
     return true;
-	}
+  }
 
-	public boolean setAno(int ano) {
+  public boolean setAno(int ano) {
     if(ano<1800){
       System.out.println("Ano invalido. Tente novamente.");
       return false;
     }
-		this.ano = ano;
+    this.ano = ano;
     return true;
-	}
+  }
 
-	public boolean setHora(int hora) {
+  public boolean setHora(int hora) {
     if(hora<0 || hora>23){
       System.out.println("Hora invalida. Tente novamente.");
       return false;
     }
-		this.hora = hora;
+    this.hora = hora;
     return true;
-	}
+  }
 
-	public boolean setMinuto(int minuto) {
+  public boolean setMinuto(int minuto) {
     if(minuto<0 || minuto>59){
       System.out.println("Minuto invalido. Tente novamente.");
       return false;
     }
-		this.minuto = minuto;
+    this.minuto = minuto;
     return true;
-	}
+  }
   public DataHora(){
     this(1,1,2000,1,1);
   }

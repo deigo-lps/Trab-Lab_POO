@@ -14,16 +14,16 @@ public class Passageiros{
     this("","",new DataHora(),new Endereco(),"","","");
   }
 
-	public Passageiros(String documento, String nome, DataHora data_nascimento, Endereco endereco, String profissao,String login,String senha) {
-		this.documento = documento;
-		this.nome = nome;
-		this.data_nascimento = data_nascimento;
-		this.endereco = endereco;
-		this.profissao = profissao;
+  public Passageiros(String documento, String nome, DataHora data_nascimento, Endereco endereco, String profissao,String login,String senha) {
+    this.documento = documento;
+    this.nome = nome;
+    this.data_nascimento = data_nascimento;
+    this.endereco = endereco;
+    this.profissao = profissao;
     this.rota=new Rotas();
     this.login=login;
     this.senha=senha;
-	}
+  }
   
   public boolean validaLogin(String senha){
     if(this.senha==senha)
@@ -40,45 +40,45 @@ public class Passageiros{
     System.out.printf("Profissao: %s\n",profissao);
   }
 
-	public String getDocumento() {
-		return documento;
-	}
+  public String getDocumento() {
+    return documento;
+  }
 
-	public String getNome() {
-		return nome;
-	}
+  public String getNome() {
+    return nome;
+  }
 
-	public DataHora getData_nascimento() {
-		return data_nascimento;
-	}
+  public DataHora getData_nascimento() {
+    return data_nascimento;
+  }
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
+  public Endereco getEndereco() {
+    return endereco;
+  }
 
-	public String getProfissao() {
-		return profissao;
-	}
+  public String getProfissao() {
+    return profissao;
+  }
 
-	public void setDocumento(String documento) {
-		this.documento = documento;
-	}
+  public void setDocumento(String documento) {
+    this.documento = documento;
+  }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-	public void setData_nascimento(DataHora data_nascimento) {
-		this.data_nascimento = data_nascimento;
-	}
+  public void setData_nascimento(DataHora data_nascimento) {
+    this.data_nascimento = data_nascimento;
+  }
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
+  }
 
-	public void setProfissao(String profissao) {
-		this.profissao = profissao;
-	}
+  public void setProfissao(String profissao) {
+    this.profissao = profissao;
+  }
   public void setRota(Rotas rota){
     this.rota=rota;
   }

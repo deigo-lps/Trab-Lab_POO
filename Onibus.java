@@ -11,14 +11,14 @@ public class Onibus{
     this("",0,"",0,new int[0][0]);
   }
   
-	public Onibus(String modelo, int anoFabricacao, String marca, int quilometragem, int[][] assentos){
-		this.modelo = modelo;
-		this.anoFabricacao = anoFabricacao;
-		this.marca = marca;
-		this.quilometragem = quilometragem;
+  public Onibus(String modelo, int anoFabricacao, String marca, int quilometragem, int[][] assentos){
+    this.modelo = modelo;
+    this.anoFabricacao = anoFabricacao;
+    this.marca = marca;
+    this.quilometragem = quilometragem;
     this.assentos=assentos;
     this.motorista=new Motorista();
-	}
+  }
   public void printOnibus(){
     System.out.printf("Modelo: %s\nAno de Fabricacao: %d\nMarca: %s\nQuilometragem: %d\n",modelo,anoFabricacao,marca,quilometragem);
   }
