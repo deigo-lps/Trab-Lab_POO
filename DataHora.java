@@ -94,7 +94,7 @@ public class DataHora{
         minuto=scan.nextInt();
       }
       else{
-        scan.close();
+        // scan.close();
         break;
       }
     }

@@ -18,7 +18,7 @@ public class Passageiros{
 		this.data_nascimento = data_nascimento;
 		this.endereco = endereco;
 		this.profissao = profissao;
-    this.rotas=new Rota();
+    this.rota=new Rotas();
 	}
   
   public void printPassageiro(){
