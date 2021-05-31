@@ -4,7 +4,7 @@
 // assentos disponíveis. O passageiro selecionará a opção preferível e a compra será efetivada.
 // O assento escolhido pelo passageiro não ficará mais disponível para comprar.
 import java.util.*;
-public class Principal{
+public class Principal extends Metodos{
   public static void main(String[] args) {
     Scanner scan = new Scanner (System.in);
     // System.out.printf("Dia: ");
@@ -36,22 +36,15 @@ public class Principal{
     int op;
     System.out.printf("Configuração Inicial.\nTenha em mente que onibus precisam de motoristas e rotas precisam de onibus.\nSe existirem mais rotas que onibus, as rotas a mais serão disperdicadas.\n");
     do{
-      System.out.printf("1 para adicionar motorista\n2 para adicionar onibus\n3 para adicionar rotas\n4 para proximo passo: ");
+      System.out.printf("1 para adicionar motorista\n2 para adicionar onibus\n3 para adicionar rotas\n4 alterar/excluir\n5 para proximo passo: ");
       op=scan.nextInt();
       switch(op){
         case 1:{
-          System.out.printf("Digite a CNH: ");
-          String cnh=scan.next();
-          System.out.printf("Digite o nome do motorista: ");
-          scan.nextLine();
-          String nome=scan.nextLine();
-          System.out.printf("Digite dia mes e ano de admissao separando por espaço: ");
-          DataHora admissao=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt());
-          motoristas.add(new Motorista(cnh,admissao,nome));
+          addmodMotorista(1,0,motoristas);
           // motoristas.get(0).printMotorista();
           break;
         }
-        //n esquecer de fazer loop pra reseta os assentos.
+        //n esquecer de fazer loop pra reseta os assentos(eu acho q precisa seila).
         case 2:{
           System.out.printf("Digite o modelo: ");
           scan.nextLine();
@@ -90,10 +83,38 @@ public class Principal{
           // rotas.get(0).printRota();
           break;
         }
-        case 4: 
+        case 4:{
+          int op1,op2,aux;
+          System.out.println("1 para alterar, 2 para excluir: ");
+          op1=scan.nextInt();
+          System.out.println("1 para motorista, 2 para onibus, 3 para rota: ");
+          op2=scan.nextInt();
+          if(op2==1){
+            for(int i=0;i<motoristas.size();i++){
+              System.out.printf("ID: %d\n",i);
+              motoristas.get(i).printMotorista();
+              System.out.println("/-----------------/");
+            }
+            System.out.println("Digite o ID do motorista: ");
+            aux=scan.nextInt();
+            if(aux<0 || aux>motoristas.size())
+              System.out.println("ID invalido.");
+            else{
+              if(op1==2){
+                motoristas.remove(aux);
+                System.out.println("Motorista apagado.");
+              }
+              else{
+                addmodMotorista(2,aux,motoristas);
+              }
+            }
+          }
+          break;
+        }
+        case 5: 
           if(motoristas.size()==0 || onibus.size()==0 || rotas.size()==0){
             System.out.println("Crie pelomenos um de cada.");
-            op=5;
+            op=6;
           }
           break;
       }

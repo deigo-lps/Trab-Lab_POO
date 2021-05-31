@@ -42,4 +42,10 @@ public class Motorista{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+  
+  public void setMotorista(String CNH,DataHora data_admissao,String nome){
+    setNome(nome);
+    setCNH(CNH);
+    setData_admissao(data_admissao);
+  }
 }
