@@ -4,6 +4,7 @@ public class Motorista{
   private String CNH;
   private DataHora data_admissao;
   private String nome;
+  private boolean temOnibus;
   
   public Motorista(){
     this("",new DataHora(),"");
@@ -14,9 +15,18 @@ public class Motorista{
     this.data_admissao = data_admissao;
     this.nome = nome;
   }
+  
   public void printMotorista(){
     System.out.printf("Nome: %s\nCNH: %s\nData de Admissao: ",nome,CNH);
     data_admissao.printDataHora();
+  }
+  
+  public boolean getTemOnibus(){
+    return temOnibus;
+  }
+  
+  public void setTemOnibus(boolean temOnibus){
+    this.temOnibus=temOnibus;
   }
 
   public String getCNH() {

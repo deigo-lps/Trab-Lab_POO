@@ -144,12 +144,51 @@ public class Principal extends Metodos{
           break;
         }
         case 5: 
-          if(motoristas.size()==0 || onibus.size()==0 || rotas.size()==0){
-            System.out.println("Crie pelomenos um de cada.");
-            op=6;
-          }
+          // if(motoristas.size()==0 || onibus.size()==0 || rotas.size()==0){
+          //   System.out.println("Crie pelomenos um de cada.");
+          //   op=6;
+          // }
           break;
       }
     }while(op!=5);
+    System.out.println("Configuração Final.");
+    int i=0;
+    int motorista;
+    boolean sem_motorista=false;
+    while(i<onibus.size()){
+      System.out.println("\nDigite o ID do motorista que deseja para o Onibus: ");
+      onibus.get(i).printOnibus();
+      System.out.println("/---------------/");
+      System.out.println("Motoristas:");
+      for(int k=0;k<motoristas.size();k++){
+        if(motoristas.get(k).getTemOnibus()){
+          sem_motorista=true;
+        }
+        else{
+          sem_motorista=false;
+          System.out.printf("ID: %d\n",k);
+          motoristas.get(k).printMotorista();
+          System.out.println();
+        }
+      }
+      if(sem_motorista){
+        System.out.println("Sem motoristas disponíveis. Cancelando.");
+        break;
+      }
+      motorista=scan.nextInt();
+      while(true){
+        if(motorista<0 || motorista>motoristas.size() || motoristas.get(motorista).getTemOnibus()){
+          System.out.println("Motorista invalido. tente novamente: ");
+          motorista=scan.nextInt();
+        }
+        else
+          break;
+      }
+      motoristas.get(motorista).setTemOnibus(true);
+      onibus.get(i).setMotorista(motoristas.get(motorista));
+      System.out.println("Motorista escolhido.\n");
+      i++;
+    }
+    while()
   }
 }
