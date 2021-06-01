@@ -6,6 +6,7 @@ public class Onibus{
   private int quilometragem;
   private int[][] assentos;/*=new int[4][12];*/
   public Motorista motorista;
+  private boolean temRota;
   
   public Onibus(){
     this("",0,"",0,new int[0][0]);
@@ -19,6 +20,15 @@ public class Onibus{
     this.assentos=assentos;
     this.motorista=new Motorista();
   }
+  
+  public boolean getTemRota(){
+    return temRota;
+  }
+  
+  public void setTemRota(boolean temRota){
+    this.temRota=temRota;
+  }
+  
   public void printOnibus(){
     System.out.printf("Modelo: %s\nAno de Fabricacao: %d\nMarca: %s\nQuilometragem: %d\n",modelo,anoFabricacao,marca,quilometragem);
   }

@@ -154,30 +154,31 @@ public class Principal extends Metodos{
     System.out.println("Configuração Final.");
     int i=0;
     int motorista;
-    boolean sem_motorista=false;
+    int com_motorista;
     while(i<onibus.size()){
+      com_motorista=0;
       System.out.println("\nDigite o ID do motorista que deseja para o Onibus: ");
       onibus.get(i).printOnibus();
       System.out.println("/---------------/");
       System.out.println("Motoristas:");
       for(int k=0;k<motoristas.size();k++){
         if(motoristas.get(k).getTemOnibus()){
-          sem_motorista=true;
+          continue;
         }
         else{
-          sem_motorista=false;
+          com_motorista++;
           System.out.printf("ID: %d\n",k);
           motoristas.get(k).printMotorista();
           System.out.println();
         }
       }
-      if(sem_motorista){
+      if(com_motorista==0){
         System.out.println("Sem motoristas disponíveis. Cancelando.");
         break;
       }
       motorista=scan.nextInt();
       while(true){
-        if(motorista<0 || motorista>motoristas.size() || motoristas.get(motorista).getTemOnibus()){
+        if(motorista<0 || motorista+1>motoristas.size() || motoristas.get(motorista).getTemOnibus()){
           System.out.println("Motorista invalido. tente novamente: ");
           motorista=scan.nextInt();
         }
@@ -189,6 +190,43 @@ public class Principal extends Metodos{
       System.out.println("Motorista escolhido.\n");
       i++;
     }
-    while()
+    i=0;
+    int com_onibus;
+    while(i<rotas.size()){
+      com_onibus=0;
+      System.out.println("\nDigite o ID do onibus que deseja para a rota: ");
+      rotas.get(i).printRota();
+      System.out.println("/---------------/");
+      System.out.println("Onibus:");
+      for(int k=0;k<onibus.size();k++){
+        //se ja tiver rota ou não tiver motorista.
+        if(onibus.get(k).getTemRota() || onibus.get(k).motorista.getNome().equals("")){
+          continue;
+        }
+        else{
+          com_onibus++;
+          System.out.printf("ID: %d\n",k);
+          onibus.get(k).printOnibus();
+          System.out.println();
+        }
+      }
+      if(com_onibus==0){
+        System.out.println("Sem onibus disponíveis. Cancelando.");
+        break;
+      }
+      int onibu=scan.nextInt();
+      while(true){
+        if(onibu<0 || onibu+1>onibus.size() || onibus.get(onibu).getTemRota() || onibus.get(onibu).motorista.getNome().equals("")){
+          System.out.println("Onibus invalido. tente novamente: ");
+          onibu=scan.nextInt();
+        }
+        else
+          break;
+      }
+      onibus.get(onibu).setTemRota(true);
+      rotas.get(i).setOnibus(onibus.get(onibu));
+      System.out.println("Onibus escolhido.\n");
+      i++;
+    }
   }
 }
