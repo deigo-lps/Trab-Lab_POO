@@ -228,5 +228,11 @@ public class Principal extends Metodos{
       System.out.println("Onibus escolhido.\n");
       i++;
     }
+    //criando array de rotas com onibus, se n tiver onibus n tem pq comprar passagem pra ela. tem nem  como na vdd, pq n vo deixa e é isso.
+    ArrayList<Rotas> rotas_disponíveis = new ArrayList<>();
+    for(i=0;i<rotas.size();i++){
+      if(!rotas.get(i).onibus.getModelo().equals(""))
+        rotas_disponíveis.add(rotas.get(i));
+    }
   }
 }
