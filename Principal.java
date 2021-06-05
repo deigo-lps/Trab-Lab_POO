@@ -31,7 +31,6 @@ public class Principal extends Metodos{
     
     ArrayList<Motorista> motoristas = new ArrayList<>();
     ArrayList<Onibus> onibus = new ArrayList<>();
-    ArrayList<Passageiros> passageiros = new ArrayList<>();
     ArrayList<Rotas> rotas = new ArrayList<>();
     int op;
     System.out.printf("Configuração Inicial.\nTenha em mente que onibus precisam de motoristas e rotas precisam de onibus.\nSe existirem mais rotas que onibus, as rotas a mais serão disperdicadas.\n");
@@ -234,5 +233,36 @@ public class Principal extends Metodos{
       if(!rotas.get(i).onibus.getModelo().equals(""))
         rotas_disponíveis.add(rotas.get(i));
     }
+    ArrayList<Passageiros> passageiros = new ArrayList<>();
+    /*daqui pra baixo é a parte do usuario. Faz um menu com opção de criar ou logar.
+    se o cara escolher criar, só pedir tudo do construtor de passageiro e tacar nele.
+    scanf fitas do construtor
+    passageiros.add(new Passageiro(fitas do construtor))
+    nisso dps q criou, (verificar se o login ja existe, se existir n deixa cria)
+    ja taca pra tela que tacaria se tivesse logado.
+    Se ele escolher logar, só pedir o login, procurar na lista de passageiros algum q tenha 
+    aquele login, se achar pedir a senha e usar o método de verificar senha q eu fiz e pocas
+    
+    dps de logar/criar, vai pro menu do passageiro(salva o indice dele em alguma variavel.).
+    Tem 2 opções, ver rota e comprar passagem.
+    se pedir pra ver rota só printar a rota com passageiros.get(indice).rota.printRota()
+    no caso verificar se ele tem uma rota antes. if(passageiros.get(i).rota.getOrigem().equals("")) print("Voce não tem rota.")
+    Se pedir pra comprar,
+    if(!passageiros.get(i).rota.getOrigem().equals("")) print("voce ja tem uma rota.") e cancela.
+    se não,
+    Pede pra ele digitar origem e destino.
+    procura na lista de rotas pra ver se alguma delas tem a origem, se achar, ve se tem o destino/parada.
+    printa as que tiverem a origem e destino(tem método pra printar)
+    com ID sendo o indice delas na lista
+    e pede pro usuario escolher pelo id.
+    (o id printa separado pq n ta no metodo).
+    
+    no que ele escolher a rota, printa a matriz de posições do busão da rota(tem método pra isso)
+    rotas.get(ID).onibus.getAssentos();
+    e pede a linha e coluna que ele quer.
+    
+    dps só marca como ocupado rotas.get(ID).onibus.setAssento(linha,coluna,1) 
+    da um passageiros.get(i).setRota(rotas.get(ID))
+    e cabo.*/
   }
 }
