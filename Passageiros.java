@@ -38,6 +38,9 @@ public class Passageiros{
     endereco.printEndereco();
     System.out.printf("Profissao: %s\n",profissao);
   }
+  public String getLogin(){
+    return login;
+  }
 
   public String getDocumento() {
     return documento;
