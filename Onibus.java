@@ -75,14 +75,16 @@ public class Onibus{
     }
     System.out.println();
   }
-  // public void getAssentosDisp(){
-  //   for(int i=0;i<assentos.length;i++){
-  //     for(int j=0;j<assentos[i].length;j++){
-  //       if(assentos[i][j]==0)
-  //         System.out.printf("Linha %d, Coluna %d\n",i+1,j+1);
-  //     }
-  //   }
-  // }
+  public boolean temAssento(){
+    boolean tem=false;
+    for(int i=0;i<assentos.length;i++){
+      for(int j=0;j<assentos[i].length;j++){
+        if(assentos[i][j]==0)
+          tem=true;
+      }
+    }
+    return tem;
+  }
   public void setAssento(int i,int j,int estado){
     if(i>assentos.length||j>assentos[i-1].length || estado<0 || estado>1){
       System.out.println("Opcao invalida.");
