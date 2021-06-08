@@ -235,6 +235,70 @@ public class Principal extends Metodos{
     }
     ArrayList<Passageiros> passageiros = new ArrayList<>();
     /*daqui pra baixo é a parte do usuario. Faz um menu com opção de criar ou logar.
+
+    */
+    int escolha;
+    do{
+      System.out.println("Digite uma opção:\n");
+      System.out.println("1 - Criar usuario\n");
+      System.out.println("2 - Logar\n");
+      System.out.println("3 - Sair\n");
+
+      escolha = scan.nextInt();
+      if(escolha == 1){
+        System.out.println("Digite o nome do passageiro: ");
+        String name = scan.nextLine();
+        System.out.println("Digite o documento do passageiro: ");
+        String Documento = scan.nextLine();
+        
+        System.out.println("Digite data de nascimento do passageiro: ");
+        DataHora data = new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt());
+
+        System.out.println("Digite o endereço do passageiro: ");
+        System.out.printf("Digite sua rua: ");
+        String rua = scan.nextLine();
+        System.out.printf("Digite o numero da sua casa: ");
+        int numero = scan.nextInt();
+        System.out.printf("Digite seu bairro: ");
+        String bairro = scan.nextLine();
+        System.out.printf("Digite o cep: ");
+        String cep = scan.nextLine();
+        System.out.printf("Digite sua cidade: ");
+        String cidade = scan.nextLine();
+        System.out.printf("Digite seu estado: ");
+        String estado = scan.nextLine();
+        Endereco endereco = new Endereco(rua, numero, bairro, cep, cidade, estado);
+
+        System.out.println("Digite a profissão do passageiro: ");
+        String profissao = scan.nextLine();
+        String login;
+        while(true){
+          boolean loginRepetido = false;
+          System.out.println("Digite o login do passageiro: ");
+          login = scan.nextLine();
+          
+          for(int k = 0; k < passageiros.size(); k++){
+            if(passageiros.get(k).getLogin().equals(login)){
+              loginRepetido = true;
+              break;
+            }
+          }
+          if(loginRepetido){
+            System.out.println("\nUsuário ja cadastrado ! Tente novamente.");
+          }else{
+            break;
+          }
+
+        }
+        System.out.println("Digite uma senha para o passageiro: ");
+        String senha = scan.nextLine();
+        passageiros.add(new Passageiros(Documento, name, data, endereco, profissao, login, senha)); 
+
+      }else if(escolha == 2){
+
+      }
+    }while(escolha!=3);
+    /*
     se o cara escolher criar, só pedir tudo do construtor de passageiro e tacar nele.
     scanf fitas do construtor
     passageiros.add(new Passageiro(fitas do construtor))
