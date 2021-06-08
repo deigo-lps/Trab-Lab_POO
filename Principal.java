@@ -247,6 +247,7 @@ public class Principal extends Metodos{
       escolha = scan.nextInt();
       if(escolha == 1){
         System.out.println("Digite o nome do passageiro: ");
+        scan.nextLine();
         String name = scan.nextLine();
         System.out.println("Digite o documento do passageiro: ");
         String Documento = scan.nextLine();
@@ -256,10 +257,12 @@ public class Principal extends Metodos{
 
         System.out.println("Digite o endereço do passageiro: ");
         System.out.printf("Digite sua rua: ");
+        scan.nextLine();
         String rua = scan.nextLine();
         System.out.printf("Digite o numero da sua casa: ");
         int numero = scan.nextInt();
         System.out.printf("Digite seu bairro: ");
+        scan.nextLine();
         String bairro = scan.nextLine();
         System.out.printf("Digite o cep: ");
         String cep = scan.nextLine();
@@ -295,7 +298,79 @@ public class Principal extends Metodos{
         passageiros.add(new Passageiros(Documento, name, data, endereco, profissao, login, senha)); 
 
       }else if(escolha == 2){
+        int k;
+        String login, senha;
+        System.out.println("Digite o login do passageiro: ");
+        scan.nextLine();
+        login = scan.nextLine();
 
+        System.out.println("Digite a senha do passageiro: ");
+        senha = scan.nextLine();
+
+        for(k = 0; k < passageiros.size(); k++){
+          if(passageiros.get(k).getLogin().equals(login)){
+            if(passageiros.get(k).getSenha().equals(senha)){
+              int indice = k;
+              int escolha2;
+              System.out.println("\n\nMenu de passageiro");
+              System.out.println("\n1 - Ver Rota");
+              System.out.println("2 - Comprar passagem");
+              System.out.println("\nDigite uma das opções: ");
+              escolha = scan.nextInt();
+
+              if(escolha == 1){
+                if(passageiros.get(i).rota.getOrigem().equals("")) 
+                  System.out.println("Voce não tem rota.");
+                else{
+                  passageiros.get(indice).rota.printRota();
+                }           
+                
+              }else if(escolha == 2){
+                if(!passageiros.get(i).rota.getOrigem().equals("")){
+                  System.out.println("voce ja tem uma rota.");
+                } else {
+                  System.out.println("Digite a origem: ");
+                  scan.nextLine();
+                  String origem = scan.nextLine();
+                  System.out.println("Digite o destino: ");
+                  scan.nextLine();
+                  String destino = scan.nextLine();
+                  for(int x = 0; x < rotas.size(); x++){
+                    if(rotas.get(x).getOrigem().equals(origem)){
+                      if(rotas.get(x).getDestino().equals(destino) ||
+                          rotas.get(x).getParada1().equals(destino) ||
+                          rotas.get(x).getParada2().equals(destino) ||
+                          rotas.get(x).getParada3().equals(destino)){
+                        int id;
+                        for(int cont = 0; cont < rotas.size(); cont++){
+                          System.out.println("\nID da rota: " + cont + "\n");
+                          rotas.get(cont).printRota();
+                        }
+                        System.out.println("\nDigite o ID da rota desejada: ");
+                        scan.nextLine();
+                        id = scan.nextInt();
+                        
+                        for(int cont = 0; cont < rotas.size(); cont++){
+                          if(id == cont){
+                            onibus.get(cont).getAssentos();
+                          }
+                        }
+                      }  
+                    }
+                  }
+                }
+              }else {
+                System.out.println("Opção Invalida !");
+              }
+            } else{
+              System.out.println("Senha incorreta !");
+            }
+          } else {
+            System.out.println("Usuario nao encontrado ! Tente novamente");
+          }
+        }
+          
+        
       }
     }while(escolha!=3);
     /*

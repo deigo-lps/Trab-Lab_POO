@@ -42,6 +42,9 @@ public class Passageiros{
   public String getLogin(){
     return login;
   }
+  public String getSenha(){
+    return login;
+  }
 
   public String getDocumento() {
     return documento;
