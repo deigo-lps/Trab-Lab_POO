@@ -20,6 +20,7 @@ public class Passageiros{
     this.data_nascimento = data_nascimento;
     this.endereco = endereco;
     this.profissao = profissao;
+    this.rota=new Rotas();
     this.login=login;
     this.senha=senha;
   }
