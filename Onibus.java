@@ -87,7 +87,7 @@ public class Onibus{
   }
   public boolean setAssento(int i,int j){
     boolean deu_certo=false;
-    if(i>assentos.length||j>assentos[i-1].length || assentos[i][j]==1)
+    if(i>assentos.length||j>assentos[i-1].length || assentos[i-1][j-1]==1)
       System.out.println("Opcao invalida.");
     else{
       this.assentos[i-1][j-1]=1;

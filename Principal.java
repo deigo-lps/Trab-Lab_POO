@@ -215,7 +215,7 @@ public class Principal extends Metodos{
       System.out.println("Digite uma opção:\n");
       System.out.println("1 - Criar usuario\n");
       System.out.println("2 - Logar\n");
-      System.out.println("3 - Sair\n");
+      System.out.printf("3 - Sair: \n");
 
       escolha = scan.nextInt();
       switch(escolha){
@@ -267,10 +267,10 @@ public class Principal extends Metodos{
         case 2:{
           int k;
           String login, senha;
-          System.out.println("Digite o login do passageiro: ");
+          System.out.printf("Digite o login do passageiro: ");
           scan.nextLine();
           login = scan.nextLine();
-          System.out.println("Digite a senha do passageiro: ");
+          System.out.printf("Digite a senha do passageiro: ");
           senha = scan.nextLine();
           for(k=0;k<passageiros.size();k++){
             if(passageiros.get(k).getLogin().equals(login) && passageiros.get(k).validaLogin(senha)){
@@ -281,7 +281,7 @@ public class Principal extends Metodos{
           break;
         }
       }
-      if(passageiro_logado==-1)
+      if(passageiro_logado==-1 && escolha!=3)
         System.out.println("Login ou senha incorretos.");
       else{
         int escolha2;
@@ -290,7 +290,7 @@ public class Principal extends Metodos{
           System.out.println("\n1 - Ver Rota");
           System.out.println("2 - Comprar passagem");
           System.out.println("3 - Logout");
-          System.out.println("\nDigite uma das opções: ");
+          System.out.printf("\nDigite uma das opções: ");
           escolha2 = scan.nextInt();
           switch(escolha2){
             case 1:{
@@ -307,10 +307,10 @@ public class Principal extends Metodos{
               if(!passageiros.get(passageiro_logado).rota.getOrigem().equals(""))
                 System.out.println("voce ja tem uma rota.");
               else{
-                System.out.println("Digite a origem: ");
+                System.out.printf("Digite a origem: ");
                 scan.nextLine();
                 String origem = scan.nextLine();
-                System.out.println("Digite o destino: ");
+                System.out.printf("Digite o destino: ");
                 String destino = scan.nextLine();
                 boolean tem_rotas=false;
                 System.out.println("Rotas Disponíveis: ");
@@ -327,15 +327,15 @@ public class Principal extends Metodos{
                   }
                 }
                 if(tem_rotas){
-                  System.out.println("\nDigite o ID da rota desejada: ");
+                  System.out.printf("\nDigite o ID da rota desejada: ");
                   int id = scan.nextInt();
                   if(id>rotas_disponiveis.size()||id<0||!rotas_disponiveis.get(id).onibus.temAssento())
                     System.out.println("Rota invalida.");
                   else{
                     rotas_disponiveis.get(id).onibus.getAssentos();
-                    System.out.println("Digite a linha que deseja: ");
+                    System.out.printf("Digite a linha que deseja: ");
                     int linha=scan.nextInt();
-                    System.out.println("Digite a coluna que deseja: ");
+                    System.out.printf("Digite a coluna que deseja: ");
                     int coluna=scan.nextInt();
                     if(rotas.get(id).onibus.setAssento(linha,coluna)){
                       passageiros.get(passageiro_logado).setRota(rotas.get(id));
@@ -349,6 +349,7 @@ public class Principal extends Metodos{
               }
               break;
             }
+            default:break;
           }
         }while(escolha2!=3);
       }
