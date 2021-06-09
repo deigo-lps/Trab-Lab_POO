@@ -29,6 +29,10 @@ public class Rotas{
     saida.printDataHora();
     System.out.printf("Chegada: ");
     chegada.printDataHora();
+    System.out.println("Onibus: ");
+    onibus.printOnibus();
+    System.out.println("Motorista: ");
+    onibus.motorista.printMotorista();
   }
 
   public String getOrigem() {

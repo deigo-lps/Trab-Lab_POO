@@ -85,12 +85,15 @@ public class Onibus{
     }
     return tem;
   }
-  public void setAssento(int i,int j,int estado){
-    if(i>assentos.length||j>assentos[i-1].length || estado<0 || estado>1){
+  public boolean setAssento(int i,int j){
+    boolean deu_certo=false;
+    if(i>assentos.length||j>assentos[i-1].length || assentos[i][j]==1)
       System.out.println("Opcao invalida.");
+    else{
+      this.assentos[i-1][j-1]=1;
+      deu_certo=true;
     }
-    else
-      this.assentos[i-1][j-1]=estado;
+    return deu_certo;
   }
   public void setOnibus(String modelo, int anoFabricacao, String marca, int quilometragem){
     setModelo(modelo);

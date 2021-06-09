@@ -8,6 +8,8 @@ public class Passageiros{
   private String profissao;
   private String login;
   private String senha;
+  private int linha;
+  private int coluna;
   public Rotas rota;
   
   public Passageiros(){
@@ -26,7 +28,7 @@ public class Passageiros{
   }
   
   public boolean validaLogin(String senha){
-    if(this.senha==senha)
+    if(this.senha.equals(senha))
       return true;
     else
       return false;
@@ -39,11 +41,19 @@ public class Passageiros{
     endereco.printEndereco();
     System.out.printf("Profissao: %s\n",profissao);
   }
+  public int getLinha(){
+    return linha;
+  }
+  
+  public int getColuna(){
+    return coluna;
+  }
+  
   public String getLogin(){
     return login;
   }
   public String getSenha(){
-    return login;
+    return senha;
   }
 
   public String getDocumento() {
@@ -72,6 +82,19 @@ public class Passageiros{
 
   public void setNome(String nome) {
     this.nome = nome;
+  }
+  
+  public void setLinha(int linha){
+    this.linha=linha;
+  }
+  
+  public void setColuna(int coluna){
+    this.coluna=coluna;
+  }
+  
+  public void setLinhaColuna(int linha,int coluna){
+    setLinha(linha);
+    setColuna(coluna);
   }
 
   public void setData_nascimento(DataHora data_nascimento) {

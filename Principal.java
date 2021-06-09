@@ -7,28 +7,6 @@ import java.util.*;
 public class Principal extends Metodos{
   public static void main(String[] args) {
     Scanner scan = new Scanner (System.in);
-    // System.out.printf("Dia: ");
-    // int dia=scan.nextInt();
-    // System.out.printf("Mes: ");
-    // int mes=scan.nextInt();
-    // System.out.printf("Ano:");
-    // int ano=scan.nextInt();
-    // System.out.printf("Hora: ");
-    // int hora=scan.nextInt();
-    // System.out.printf("Minuto: ");
-    // int minuto=scan.nextInt();
-    // DataHora data=new DataHora(dia,mes,ano,hora,minuto);
-    // data.printDataHora();
-    
-    // Onibus onibus=new Onibus("modelo",2021,"benz",25,new int[4][12]);
-    // onibus.resetAssentos();
-    // onibus.setAssento(4,12,2);
-    // onibus.getAssentos();
-    // onibus.motorista.printMotorista();
-    
-    // Rotas rota=new Rotas("Rio Preto","Cedral?","Nsei1","Nsei2","Nsei3",new DataHora(28,04,2021,22,30),new DataHora(29,04,2021,10,50));
-    // rota.printRota();
-    
     ArrayList<Motorista> motoristas = new ArrayList<>();
     ArrayList<Onibus> onibus = new ArrayList<>();
     ArrayList<Rotas> rotas = new ArrayList<>();
@@ -40,18 +18,14 @@ public class Principal extends Metodos{
       switch(op){
         case 1:{
           addmodMotorista(1,0,motoristas);
-          // motoristas.get(0).printMotorista();
           break;
         }
-        //n esquecer de fazer loop pra reseta os assentos(eu acho q precisa seila).
         case 2:{
           addmodOnibus(1,0,onibus);
-          // onibus.get(0).printOnibus();
           break;
         }
         case 3:{
           addmodRota(1,0,rotas);
-          // rotas.get(0).printRota();
           break;
         }
         case 4:{
@@ -143,10 +117,10 @@ public class Principal extends Metodos{
           break;
         }
         case 5: 
-          // if(motoristas.size()==0 || onibus.size()==0 || rotas.size()==0){
-          //   System.out.println("Crie pelomenos um de cada.");
-          //   op=6;
-          // }
+          if(motoristas.size()==0 || onibus.size()==0 || rotas.size()==0){
+            System.out.println("Crie pelomenos um de cada.");
+            op=6;
+          }
           break;
       }
     }while(op!=5);
@@ -228,180 +202,156 @@ public class Principal extends Metodos{
       i++;
     }
     //criando array de rotas com onibus, se n tiver onibus n tem pq comprar passagem pra ela. tem nem  como na vdd, pq n vo deixa e é isso.
-    ArrayList<Rotas> rotas_disponíveis = new ArrayList<>();
+    ArrayList<Rotas> rotas_disponiveis = new ArrayList<>();
     for(i=0;i<rotas.size();i++){
       if(!rotas.get(i).onibus.getModelo().equals(""))
-        rotas_disponíveis.add(rotas.get(i));
+        rotas_disponiveis.add(rotas.get(i));
     }
     ArrayList<Passageiros> passageiros = new ArrayList<>();
-    /*daqui pra baixo é a parte do usuario. Faz um menu com opção de criar ou logar.
-
-    */
     int escolha;
+    int passageiro_logado;
     do{
+      passageiro_logado=-1;
       System.out.println("Digite uma opção:\n");
       System.out.println("1 - Criar usuario\n");
       System.out.println("2 - Logar\n");
       System.out.println("3 - Sair\n");
 
       escolha = scan.nextInt();
-      if(escolha == 1){
-        System.out.println("Digite o nome do passageiro: ");
-        scan.nextLine();
-        String name = scan.nextLine();
-        System.out.println("Digite o documento do passageiro: ");
-        String Documento = scan.nextLine();
-        
-        System.out.println("Digite data de nascimento do passageiro: ");
-        DataHora data = new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt());
-
-        System.out.println("Digite o endereço do passageiro: ");
-        System.out.printf("Digite sua rua: ");
-        scan.nextLine();
-        String rua = scan.nextLine();
-        System.out.printf("Digite o numero da sua casa: ");
-        int numero = scan.nextInt();
-        System.out.printf("Digite seu bairro: ");
-        scan.nextLine();
-        String bairro = scan.nextLine();
-        System.out.printf("Digite o cep: ");
-        String cep = scan.nextLine();
-        System.out.printf("Digite sua cidade: ");
-        String cidade = scan.nextLine();
-        System.out.printf("Digite seu estado: ");
-        String estado = scan.nextLine();
-        Endereco endereco = new Endereco(rua, numero, bairro, cep, cidade, estado);
-
-        System.out.println("Digite a profissão do passageiro: ");
-        String profissao = scan.nextLine();
-        String login;
-        while(true){
-          boolean loginRepetido = false;
+      switch(escolha){
+        case 1:{
+          System.out.printf("Digite o nome: ");
+          scan.nextLine();
+          String nome=scan.nextLine();
+          System.out.printf("Digite o documento: ");
+          String documento=scan.nextLine();
+          System.out.printf("Digite a profissao: ");
+          String profissao=scan.nextLine();
+          String login;
+          while(true){
+            boolean login_repetido=false;
+            System.out.printf("Digite o login: ");
+            login=scan.nextLine();
+            for(i=0;i<passageiros.size();i++){
+              if(passageiros.get(i).getLogin().equals(login)){
+                login_repetido=true;
+                break;
+              }
+            }
+            if(login_repetido)
+              System.out.println("Login ja existente. tente novamente.");
+            else
+              break;
+          }
+          System.out.printf("Digite a senha: ");
+          String senha=scan.nextLine();
+          System.out.printf("Digite sua rua: ");
+          String rua=scan.nextLine();
+          System.out.printf("Digite o numero da sua casa: ");
+          int numero=scan.nextInt();
+          System.out.printf("Digite seu bairro: ");
+          scan.nextLine();
+          String bairro=scan.nextLine();
+          System.out.printf("Digite o cep: ");
+          String cep=scan.nextLine();
+          System.out.printf("Digite sua cidade: ");
+          String cidade=scan.nextLine();
+          System.out.printf("Digite seu estado: ");
+          String estado=scan.nextLine();
+          System.out.printf("Digite sua data de nascimento separando por espaço: ");
+          passageiro_logado=passageiros.size();
+          passageiros.add(new Passageiros(documento,nome,new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt()),new Endereco(rua,numero,bairro,cep,cidade,estado),profissao,login,senha));
+          System.out.println("Passageiro criado.");
+          break;
+        }
+        case 2:{
+          int k;
+          String login, senha;
           System.out.println("Digite o login do passageiro: ");
+          scan.nextLine();
           login = scan.nextLine();
-          
-          for(int k = 0; k < passageiros.size(); k++){
-            if(passageiros.get(k).getLogin().equals(login)){
-              loginRepetido = true;
+          System.out.println("Digite a senha do passageiro: ");
+          senha = scan.nextLine();
+          for(k=0;k<passageiros.size();k++){
+            if(passageiros.get(k).getLogin().equals(login) && passageiros.get(k).validaLogin(senha)){
+              passageiro_logado=k;
               break;
             }
           }
-          if(loginRepetido){
-            System.out.println("\nUsuário ja cadastrado ! Tente novamente.");
-          }else{
-            break;
-          }
-
+          break;
         }
-        System.out.println("Digite uma senha para o passageiro: ");
-        String senha = scan.nextLine();
-        passageiros.add(new Passageiros(Documento, name, data, endereco, profissao, login, senha)); 
-
-      }else if(escolha == 2){
-        int k;
-        String login, senha;
-        System.out.println("Digite o login do passageiro: ");
-        scan.nextLine();
-        login = scan.nextLine();
-
-        System.out.println("Digite a senha do passageiro: ");
-        senha = scan.nextLine();
-
-        for(k = 0; k < passageiros.size(); k++){
-          if(passageiros.get(k).getLogin().equals(login)){
-            if(passageiros.get(k).getSenha().equals(senha)){
-              int indice = k;
-              int escolha2;
-              System.out.println("\n\nMenu de passageiro");
-              System.out.println("\n1 - Ver Rota");
-              System.out.println("2 - Comprar passagem");
-              System.out.println("\nDigite uma das opções: ");
-              escolha = scan.nextInt();
-
-              if(escolha == 1){
-                if(passageiros.get(i).rota.getOrigem().equals("")) 
-                  System.out.println("Voce não tem rota.");
-                else{
-                  passageiros.get(indice).rota.printRota();
-                }           
-                
-              }else if(escolha == 2){
-                if(!passageiros.get(i).rota.getOrigem().equals("")){
-                  System.out.println("voce ja tem uma rota.");
-                } else {
-                  System.out.println("Digite a origem: ");
-                  scan.nextLine();
-                  String origem = scan.nextLine();
-                  System.out.println("Digite o destino: ");
-                  scan.nextLine();
-                  String destino = scan.nextLine();
-                  for(int x = 0; x < rotas.size(); x++){
-                    if(rotas.get(x).getOrigem().equals(origem)){
-                      if(rotas.get(x).getDestino().equals(destino) ||
-                          rotas.get(x).getParada1().equals(destino) ||
-                          rotas.get(x).getParada2().equals(destino) ||
-                          rotas.get(x).getParada3().equals(destino)){
-                        int id;
-                        for(int cont = 0; cont < rotas.size(); cont++){
-                          System.out.println("\nID da rota: " + cont + "\n");
-                          rotas.get(cont).printRota();
-                        }
-                        System.out.println("\nDigite o ID da rota desejada: ");
-                        scan.nextLine();
-                        id = scan.nextInt();
-                        
-                        for(int cont = 0; cont < rotas.size(); cont++){
-                          if(id == cont){
-                            onibus.get(cont).getAssentos();
-                          }
-                        }
-                      }  
+      }
+      if(passageiro_logado==-1)
+        System.out.println("Login ou senha incorretos.");
+      else{
+        int escolha2;
+        do{
+          System.out.println("\nMenu de passageiro");
+          System.out.println("\n1 - Ver Rota");
+          System.out.println("2 - Comprar passagem");
+          System.out.println("3 - Logout");
+          System.out.println("\nDigite uma das opções: ");
+          escolha2 = scan.nextInt();
+          switch(escolha2){
+            case 1:{
+              if(passageiros.get(passageiro_logado).rota.getOrigem().equals(""))
+                System.out.println("Voce nao tem rota.");
+              else{
+                passageiros.get(passageiro_logado).rota.printRota();
+                System.out.println("Linha: "+passageiros.get(passageiro_logado).getLinha());
+                System.out.println("Coluna: "+passageiros.get(passageiro_logado).getColuna());
+              }
+              break;
+            }
+            case 2:{
+              if(!passageiros.get(passageiro_logado).rota.getOrigem().equals(""))
+                System.out.println("voce ja tem uma rota.");
+              else{
+                System.out.println("Digite a origem: ");
+                scan.nextLine();
+                String origem = scan.nextLine();
+                System.out.println("Digite o destino: ");
+                String destino = scan.nextLine();
+                boolean tem_rotas=false;
+                System.out.println("Rotas Disponíveis: ");
+                for(int x = 0; x < rotas.size(); x++){
+                  if(rotas_disponiveis.get(x).getOrigem().equals(origem) &&
+                  (rotas_disponiveis.get(x).getDestino().equals(destino) ||
+                  rotas_disponiveis.get(x).getParada1().equals(destino) ||
+                  rotas_disponiveis.get(x).getParada2().equals(destino) ||
+                  rotas_disponiveis.get(x).getParada3().equals(destino)) && rotas_disponiveis.get(x).onibus.temAssento()){
+                    System.out.println("ID: "+x);
+                    rotas_disponiveis.get(x).printRota();
+                    System.out.println("/-------------------/");
+                    tem_rotas=true;
+                  }
+                }
+                if(tem_rotas){
+                  System.out.println("\nDigite o ID da rota desejada: ");
+                  int id = scan.nextInt();
+                  if(id>rotas_disponiveis.size()||id<0||!rotas_disponiveis.get(id).onibus.temAssento())
+                    System.out.println("Rota invalida.");
+                  else{
+                    rotas_disponiveis.get(id).onibus.getAssentos();
+                    System.out.println("Digite a linha que deseja: ");
+                    int linha=scan.nextInt();
+                    System.out.println("Digite a coluna que deseja: ");
+                    int coluna=scan.nextInt();
+                    if(rotas.get(id).onibus.setAssento(linha,coluna)){
+                      passageiros.get(passageiro_logado).setRota(rotas.get(id));
+                      passageiros.get(passageiro_logado).setLinhaColuna(linha,coluna);
                     }
                   }
                 }
-              }else {
-                System.out.println("Opção Invalida !");
+                else{
+                  System.out.println("Nao exitem rotas disponiveis.");
+                }
               }
-            } else{
-              System.out.println("Senha incorreta !");
+              break;
             }
-          } else {
-            System.out.println("Usuario nao encontrado ! Tente novamente");
           }
-        }
-          
-        
+        }while(escolha2!=3);
       }
     }while(escolha!=3);
-    /*
-    se o cara escolher criar, só pedir tudo do construtor de passageiro e tacar nele.
-    scanf fitas do construtor
-    passageiros.add(new Passageiro(fitas do construtor))
-    nisso dps q criou, (verificar se o login ja existe, se existir n deixa cria)
-    ja taca pra tela que tacaria se tivesse logado.
-    Se ele escolher logar, só pedir o login, procurar na lista de passageiros algum q tenha 
-    aquele login, se achar pedir a senha e usar o método de verificar senha q eu fiz e pocas
-    
-    dps de logar/criar, vai pro menu do passageiro(salva o indice dele em alguma variavel.).
-    Tem 2 opções, ver rota e comprar passagem.
-    se pedir pra ver rota só printar a rota com passageiros.get(indice).rota.printRota()
-    no caso verificar se ele tem uma rota antes. if(passageiros.get(i).rota.getOrigem().equals("")) print("Voce não tem rota.")
-    Se pedir pra comprar,
-    if(!passageiros.get(i).rota.getOrigem().equals("")) print("voce ja tem uma rota.") e cancela.
-    se não,
-    Pede pra ele digitar origem e destino.
-    procura na lista de rotas pra ver se alguma delas tem a origem, se achar, ve se tem o destino/parada.
-    printa as que tiverem a origem e destino(tem método pra printar)
-    com ID sendo o indice delas na lista
-    e pede pro usuario escolher pelo id.
-    (o id printa separado pq n ta no metodo).
-    
-    no que ele escolher a rota, printa a matriz de posições do busão da rota(tem método pra isso)
-    rotas.get(ID).onibus.getAssentos();
-    e pede a linha e coluna que ele quer.
-    
-    dps só marca como ocupado rotas.get(ID).onibus.setAssento(linha,coluna,1) 
-    da um passageiros.get(i).setRota(rotas.get(ID))
-    e cabo.*/
   }
 }
