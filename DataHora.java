@@ -77,7 +77,6 @@ public class DataHora{
   public DataHora(int dia,int mes,int ano){
     this(dia,mes,ano,1,1);
   }
-  //melhorar
   public DataHora(int dia,int mes,int ano,int hora,int minuto){
     Scanner scan=new Scanner(System.in);
     while(true){
@@ -94,7 +93,6 @@ public class DataHora{
         minuto=scan.nextInt();
       }
       else{
-        // scan.close();
         break;
       }
     }

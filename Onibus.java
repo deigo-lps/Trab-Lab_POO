@@ -59,6 +59,7 @@ public class Onibus{
   public void setMotorista(Motorista motorista){
     this.motorista=motorista;
   }
+  //passa as posiçoes para livres.
   public void resetAssentos(){
     for(int i=0;i<assentos.length;i++){
       for(int j=0;j<assentos[i].length;j++){
@@ -66,6 +67,7 @@ public class Onibus{
       }
     }
   }
+  //printa a matriz de assentos.
   public void getAssentos(){
     for(int i=0;i<assentos.length;i++){
       System.out.printf("\n");
@@ -75,6 +77,7 @@ public class Onibus{
     }
     System.out.println();
   }
+  //retorna se tem assentos livres.
   public boolean temAssento(){
     boolean tem=false;
     for(int i=0;i<assentos.length;i++){
@@ -85,6 +88,9 @@ public class Onibus{
     }
     return tem;
   }
+  //marca um assento como ocupado.
+  //faz verificações antes.
+  //retorna se marcou como ocupado ou não.
   public boolean setAssento(int i,int j){
     boolean deu_certo=false;
     if(i>assentos.length||j>assentos[i-1].length || assentos[i-1][j-1]==1)

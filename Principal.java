@@ -11,6 +11,7 @@ public class Principal extends Metodos{
     ArrayList<Onibus> onibus = new ArrayList<>();
     ArrayList<Rotas> rotas = new ArrayList<>();
     int op;
+    //Configuração inicial é pra cadastrar motoristas onibus e rotas.
     System.out.printf("Configuração Inicial.\nTenha em mente que onibus precisam de motoristas e rotas precisam de onibus.\nSe existirem mais rotas que onibus, as rotas a mais serão disperdicadas.\n");
     do{
       System.out.printf("1 para adicionar motorista\n2 para adicionar onibus\n3 para adicionar rotas\n4 alterar/excluir\n5 para proximo passo: ");
@@ -124,6 +125,7 @@ public class Principal extends Metodos{
           break;
       }
     }while(op!=5);
+    //final é para dar motoristas aos onibus e onibus as rotas.
     System.out.println("Configuração Final.");
     int i=0;
     int motorista;
@@ -135,6 +137,7 @@ public class Principal extends Metodos{
       System.out.println("/---------------/");
       System.out.println("Motoristas:");
       for(int k=0;k<motoristas.size();k++){
+        //printa só os que não tem onibus.
         if(motoristas.get(k).getTemOnibus()){
           continue;
         }
@@ -172,7 +175,7 @@ public class Principal extends Metodos{
       System.out.println("/---------------/");
       System.out.println("Onibus:");
       for(int k=0;k<onibus.size();k++){
-        //se ja tiver rota ou não tiver motorista.
+        //printa se não tiver rota e tiver motorista.
         if(onibus.get(k).getTemRota() || onibus.get(k).motorista.getNome().equals("")){
           continue;
         }
@@ -201,7 +204,7 @@ public class Principal extends Metodos{
       System.out.println("Onibus escolhido.\n");
       i++;
     }
-    //criando array de rotas com onibus, se n tiver onibus n tem pq comprar passagem pra ela. tem nem  como na vdd, pq n vo deixa e é isso.
+    //criando array de rotas com onibus.
     ArrayList<Rotas> rotas_disponiveis = new ArrayList<>();
     for(i=0;i<rotas.size();i++){
       if(!rotas.get(i).onibus.getModelo().equals(""))
@@ -211,6 +214,7 @@ public class Principal extends Metodos{
     int escolha;
     int passageiro_logado;
     do{
+      //indice do passageiro logado.
       passageiro_logado=-1;
       System.out.println("Digite uma opção:\n");
       System.out.println("1 - Criar usuario\n");
@@ -228,6 +232,7 @@ public class Principal extends Metodos{
           System.out.printf("Digite a profissao: ");
           String profissao=scan.nextLine();
           String login;
+          //pede login até ser valido.
           while(true){
             boolean login_repetido=false;
             System.out.printf("Digite o login: ");
@@ -259,6 +264,7 @@ public class Principal extends Metodos{
           System.out.printf("Digite seu estado: ");
           String estado=scan.nextLine();
           System.out.printf("Digite sua data de nascimento separando por espaço: ");
+          //indice do passageiro criado vai ser o tamanho da lista antes de adicionar ele.
           passageiro_logado=passageiros.size();
           passageiros.add(new Passageiros(documento,nome,new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt()),new Endereco(rua,numero,bairro,cep,cidade,estado),profissao,login,senha));
           System.out.println("Passageiro criado.");
@@ -281,6 +287,7 @@ public class Principal extends Metodos{
           break;
         }
       }
+      //se não logou
       if(passageiro_logado==-1 && escolha!=3)
         System.out.println("Login ou senha incorretos.");
       else{
@@ -294,6 +301,7 @@ public class Principal extends Metodos{
           escolha2 = scan.nextInt();
           switch(escolha2){
             case 1:{
+              //se não tiver rota.
               if(passageiros.get(passageiro_logado).rota.getOrigem().equals(""))
                 System.out.println("Voce nao tem rota.");
               else{
@@ -304,6 +312,7 @@ public class Principal extends Metodos{
               break;
             }
             case 2:{
+              //se ja tiver rota.
               if(!passageiros.get(passageiro_logado).rota.getOrigem().equals(""))
                 System.out.println("voce ja tem uma rota.");
               else{
@@ -314,6 +323,7 @@ public class Principal extends Metodos{
                 String destino = scan.nextLine();
                 boolean tem_rotas=false;
                 System.out.println("Rotas Disponíveis: ");
+                //printa se tem a origem e destino/parada, e se o onibus não estiver lotado.
                 for(int x = 0; x < rotas.size(); x++){
                   if(rotas_disponiveis.get(x).getOrigem().equals(origem) &&
                   (rotas_disponiveis.get(x).getDestino().equals(destino) ||
