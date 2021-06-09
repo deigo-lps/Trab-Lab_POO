@@ -339,7 +339,7 @@ public class Principal extends Metodos{
                 if(tem_rotas){
                   System.out.printf("\nDigite o ID da rota desejada: ");
                   int id = scan.nextInt();
-                  if(id>rotas_disponiveis.size()||id<0||!rotas_disponiveis.get(id).onibus.temAssento())
+                  if(id>=rotas_disponiveis.size()||id<0||!rotas_disponiveis.get(id).onibus.temAssento())
                     System.out.println("Rota invalida.");
                   else{
                     rotas_disponiveis.get(id).onibus.getAssentos();
