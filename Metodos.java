@@ -9,7 +9,7 @@ public class Metodos{
     System.out.printf("Digite o nome do motorista: ");
     scan.nextLine();
     String nome=scan.nextLine();
-    System.out.printf("Digite dia mes e ano de admissao separando por espaço: ");
+    System.out.printf("Digite dia mes e ano de admissao separando por espaco: ");
     DataHora admissao=new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt());
     if(op==1)
       motoristas.add(new Motorista(cnh,admissao,nome));

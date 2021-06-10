@@ -12,7 +12,7 @@ public class Principal extends Metodos{
     ArrayList<Rotas> rotas = new ArrayList<>();
     int op;
     //Configuração inicial é pra cadastrar motoristas onibus e rotas.
-    System.out.printf("Configuração Inicial.\nTenha em mente que onibus precisam de motoristas e rotas precisam de onibus.\nSe existirem mais rotas que onibus, as rotas a mais serão disperdicadas.\n");
+    System.out.printf("Configuracao Inicial.\nTenha em mente que onibus precisam de motoristas e rotas precisam de onibus.\nSe existirem mais rotas que onibus, as rotas a mais serao disperdicadas.\n");
     do{
       System.out.printf("1 para adicionar motorista\n2 para adicionar onibus\n3 para adicionar rotas\n4 alterar/excluir\n5 para proximo passo: ");
       op=scan.nextInt();
@@ -126,7 +126,7 @@ public class Principal extends Metodos{
       }
     }while(op!=5);
     //final é para dar motoristas aos onibus e onibus as rotas.
-    System.out.println("Configuração Final.");
+    System.out.println("Configuracao Final.");
     int i=0;
     int motorista;
     int com_motorista;
@@ -149,7 +149,7 @@ public class Principal extends Metodos{
         }
       }
       if(com_motorista==0){
-        System.out.println("Sem motoristas disponíveis. Cancelando.");
+        System.out.println("Sem motoristas disponiveis. Cancelando.");
         break;
       }
       motorista=scan.nextInt();
@@ -187,7 +187,7 @@ public class Principal extends Metodos{
         }
       }
       if(com_onibus==0){
-        System.out.println("Sem onibus disponíveis. Cancelando.");
+        System.out.println("Sem onibus disponiveis. Cancelando.");
         break;
       }
       int onibu=scan.nextInt();
@@ -216,7 +216,7 @@ public class Principal extends Metodos{
     do{
       //indice do passageiro logado.
       passageiro_logado=-1;
-      System.out.println("Digite uma opção:\n");
+      System.out.println("Digite uma opcao:\n");
       System.out.println("1 - Criar usuario\n");
       System.out.println("2 - Logar\n");
       System.out.printf("3 - Sair: \n");
@@ -263,7 +263,7 @@ public class Principal extends Metodos{
           String cidade=scan.nextLine();
           System.out.printf("Digite seu estado: ");
           String estado=scan.nextLine();
-          System.out.printf("Digite sua data de nascimento separando por espaço: ");
+          System.out.printf("Digite sua data de nascimento separando por espaco: ");
           //indice do passageiro criado vai ser o tamanho da lista antes de adicionar ele.
           passageiro_logado=passageiros.size();
           passageiros.add(new Passageiros(documento,nome,new DataHora(scan.nextInt(),scan.nextInt(),scan.nextInt()),new Endereco(rua,numero,bairro,cep,cidade,estado),profissao,login,senha));
@@ -297,7 +297,7 @@ public class Principal extends Metodos{
           System.out.println("\n1 - Ver Rota");
           System.out.println("2 - Comprar passagem");
           System.out.println("3 - Logout");
-          System.out.printf("\nDigite uma das opções: ");
+          System.out.printf("\nDigite uma das opcoes: ");
           escolha2 = scan.nextInt();
           switch(escolha2){
             case 1:{
@@ -322,7 +322,7 @@ public class Principal extends Metodos{
                 System.out.printf("Digite o destino: ");
                 String destino = scan.nextLine();
                 boolean tem_rotas=false;
-                System.out.println("Rotas Disponíveis: ");
+                System.out.println("Rotas Disponiveis: ");
                 //printa se tem a origem e destino/parada, e se o onibus não estiver lotado.
                 for(int x = 0; x < rotas.size(); x++){
                   if(rotas_disponiveis.get(x).getOrigem().equals(origem) &&
