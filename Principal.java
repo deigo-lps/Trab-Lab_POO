@@ -1,8 +1,5 @@
-// A partir dos dados cadastrados, você deverá implementar o sistema de compra de passagens.
-// O passageiro escolherá a origem e destino (ex: São José do Rio Preto, Brasília), o sistema
-// deverá informar os horários, as rotas, o nome do motorista, os valores da passagem e os
-// assentos disponíveis. O passageiro selecionará a opção preferível e a compra será efetivada.
-// O assento escolhido pelo passageiro não ficará mais disponível para comprar.
+//Diego Lopes
+//Jardel Brandao
 import java.util.*;
 public class Principal extends Metodos{
   public static void main(String[] args) {
@@ -290,7 +287,7 @@ public class Principal extends Metodos{
       //se não logou
       if(passageiro_logado==-1 && escolha!=3)
         System.out.println("Login ou senha incorretos.");
-      else{
+      else if(escolha!=3){
         int escolha2;
         do{
           System.out.println("\nMenu de passageiro");
