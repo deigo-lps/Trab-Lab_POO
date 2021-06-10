@@ -1,5 +1,5 @@
 import java.util.*;
-public class Metodos{
+public abstract class Metodos{
   //op==1 adiciona um motorista novo com as informações.
   //op==2 modifica um ja existente com as informações.
   public static void addmodMotorista(int op,int id,ArrayList<Motorista> motoristas){
